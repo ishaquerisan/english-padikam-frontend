@@ -69,6 +69,14 @@ export const Home: React.FC = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-indigo-500/20 via-purple-500/20 to-pink-500/10 rounded-full blur-3xl -z-10" />
 
         <div className="text-center max-w-3xl mx-auto space-y-6">
+          <div className="flex justify-center">
+            <img
+              src="/logo.png"
+              alt="Padikam Logo"
+              className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl object-contain shadow-xl hover:scale-105 transition-transform animate-float"
+            />
+          </div>
+
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-950/80 border border-indigo-200/80 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs sm:text-sm font-bold shadow-sm">
             <Sparkles size={16} className="text-indigo-500" />
             <span>മലയാളികൾക്കായി പ്രത്യേകം തയ്യാറാക്കിയ ഇംഗ്ലീഷ് ആപ്പ്</span>

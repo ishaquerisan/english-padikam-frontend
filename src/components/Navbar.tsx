@@ -49,9 +49,11 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-3">
         {/* Logo and Brand */}
         <Link to={isAuthenticated ? '/dashboard' : '/'} className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-glow group-hover:scale-105 transition-transform flex-shrink-0">
-            <BookOpen size={20} className="sm:w-[22px] sm:h-[22px]" />
-          </div>
+          <img
+            src="/logo.png"
+            alt="Padikam Logo"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-contain shadow-sm group-hover:scale-105 transition-transform flex-shrink-0"
+          />
           <div>
             <div className="flex items-center gap-1.5">
               <span className="text-lg sm:text-xl font-black tracking-tight text-slate-900 dark:text-white">

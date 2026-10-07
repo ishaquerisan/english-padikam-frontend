@@ -39,8 +39,9 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-slate-400 font-bold">
-        Loading Padikam...
+      <div className="min-h-screen flex flex-col items-center justify-center gap-3 bg-slate-50 dark:bg-slate-950 text-slate-500">
+        <img src="/logo.png" alt="Padikam Logo" className="w-16 h-16 rounded-2xl object-contain animate-pulse" />
+        <span className="font-bold text-sm">Loading Padikam...</span>
       </div>
     );
   }
@@ -58,8 +59,9 @@ const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-slate-400 font-bold">
-        Loading...
+      <div className="min-h-screen flex flex-col items-center justify-center gap-3 bg-slate-50 dark:bg-slate-950 text-slate-500">
+        <img src="/logo.png" alt="Padikam Logo" className="w-16 h-16 rounded-2xl object-contain animate-pulse" />
+        <span className="font-bold text-sm">Loading Padikam Admin...</span>
       </div>
     );
   }

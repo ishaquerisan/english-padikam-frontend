@@ -41,9 +41,11 @@ export const Login: React.FC = () => {
       <div className="glass-panel w-full max-w-md rounded-3xl p-8 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mx-auto shadow-glow">
-            <BookOpen size={24} />
-          </div>
+          <img
+            src="/logo.png"
+            alt="Padikam Logo"
+            className="w-16 h-16 rounded-2xl object-contain mx-auto shadow-md hover:scale-105 transition-transform"
+          />
           <h2 className="text-2xl font-black text-slate-900 dark:text-white">
             Welcome Back to Padikam
           </h2>

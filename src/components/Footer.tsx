@@ -11,10 +11,12 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Brand */}
         <div className="md:col-span-2 space-y-3">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white">
-              <BookOpen size={18} />
-            </div>
+          <div className="flex items-center gap-2.5">
+            <img
+              src="/logo.png"
+              alt="Padikam Logo"
+              className="w-8 h-8 rounded-lg object-contain shadow-sm"
+            />
             <span className="text-xl font-black text-slate-900 dark:text-white">Padikam</span>
             <span className="font-malayalam font-bold text-indigo-600 dark:text-indigo-400 text-xs">
               (പഠിക്കാം)
@@ -89,6 +91,9 @@ export const Footer: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 mt-8 border-t border-slate-100 dark:border-slate-800 text-center text-xs">
         © {new Date().getFullYear()} Padikam English Learning Platform. All rights reserved.
+      </div>
+      <div className="text-center text-xs">
+        Developed by <a href="https://altezzai.com" target="_blank" rel="noopener noreferrer">Altezzai LLP</a>
       </div>
     </footer>
   );

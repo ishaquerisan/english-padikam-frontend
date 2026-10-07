@@ -6,9 +6,16 @@ export const About: React.FC = () => {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       <div className="text-center space-y-4 max-w-2xl mx-auto">
-        <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
-          Our Vision & Mission
-        </span>
+        <img
+          src="/logo.png"
+          alt="Padikam Logo"
+          className="w-20 h-20 rounded-3xl object-contain mx-auto shadow-lg hover:scale-105 transition-transform"
+        />
+        <div>
+          <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
+            Our Vision & Mission
+          </span>
+        </div>
         <h1 className="text-4xl font-black text-slate-900 dark:text-white">
           Empowering Malayalam Speakers with Practical English
         </h1>
