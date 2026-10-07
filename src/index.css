@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-malayalam: 'Noto Sans Malayalam', 'Manjari', 'Gayathri', sans-serif;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans;
+  }
+
+  .font-malayalam {
+    font-family: var(--font-malayalam);
+    line-height: 1.6;
+  }
+}
+
+/* Custom UI enhancements */
+.glass-panel {
+  @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 shadow-soft;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-indigo-400 dark:via-purple-300 dark:to-pink-400;
+}
+
+.gradient-emerald {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-500 dark:from-emerald-400 dark:to-teal-300;
+}
+
+.calendar-cell-0 {
+  @apply bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800;
+}
+.calendar-cell-1 {
+  @apply bg-emerald-200 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-300;
+}
+.calendar-cell-2 {
+  @apply bg-emerald-400 dark:bg-emerald-800 border border-emerald-500 dark:border-emerald-700 text-emerald-950 dark:text-emerald-100;
+}
+.calendar-cell-3 {
+  @apply bg-emerald-500 dark:bg-emerald-600 border border-emerald-600 dark:border-emerald-500 text-white font-semibold;
+}
+.calendar-cell-4 {
+  @apply bg-emerald-600 dark:bg-emerald-500 border border-emerald-700 dark:border-emerald-400 text-white font-bold shadow-sm shadow-emerald-500/30;
+}
