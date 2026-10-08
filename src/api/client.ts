@@ -1,6 +1,16 @@
 import axios from 'axios';
 
-export const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const getBaseUrl = (): string => {
+  const customUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_BASE_URL;
+  if (customUrl) {
+    // Ensure the URL ends with /api
+    return customUrl.endsWith('/api') ? customUrl : `${customUrl.replace(/\/$/, '')}/api`;
+  }
+  // Default fallback
+  return import.meta.env.DEV ? 'http://localhost:5001/api' : 'https://api.padikam.altezzai.com/api';
+};
+
+export const API_BASE_URL = getBaseUrl();
 
 const api = axios.create({
   baseURL: API_BASE_URL,

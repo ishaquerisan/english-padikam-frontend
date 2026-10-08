@@ -1,6 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User } from '../types';
 import { authService } from '../services/authService';
+import {
+  signInWithGoogle as firebaseGoogleSignIn,
+  logoutFirebase,
+  isFirebaseConfigured,
+} from '../config/firebase';
 
 interface AuthContextType {
   user: User | null;
@@ -10,7 +15,13 @@ interface AuthContextType {
   currentStreak: number;
   longestStreak: number;
   dailyGoal: number;
+  isFirebaseReady: boolean;
   login: (token: string, user: User) => void;
+  loginWithGoogle: (customSettings?: {
+    englishLevel?: string;
+    learningGoal?: string;
+    dailyGoal?: number;
+  }) => Promise<User>;
   logout: () => void;
   refreshUser: () => Promise<void>;
   updateUserData: (updatedUser: Partial<User>) => void;
@@ -27,6 +38,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [currentStreak, setCurrentStreak] = useState<number>(0);
   const [longestStreak, setLongestStreak] = useState<number>(0);
   const [dailyGoal, setDailyGoal] = useState<number>(5);
+  const isFirebaseReady = isFirebaseConfigured();
 
   const refreshUser = async () => {
     const savedToken = localStorage.getItem('padikam_token') || localStorage.getItem('angleyam_token');
@@ -76,11 +88,40 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setDailyGoal(newUser.dailyGoal || 5);
   };
 
+  const loginWithGoogle = async (customSettings?: {
+    englishLevel?: string;
+    learningGoal?: string;
+    dailyGoal?: number;
+  }): Promise<User> => {
+    // 1. Authenticate with Google popup via Firebase
+    const googleResult = await firebaseGoogleSignIn();
+
+    // 2. Exchange Firebase idToken with backend API
+    const res = await authService.googleLogin({
+      idToken: googleResult.idToken,
+      email: googleResult.email,
+      name: googleResult.displayName,
+      photoUrl: googleResult.photoURL || undefined,
+      englishLevel: customSettings?.englishLevel,
+      learningGoal: customSettings?.learningGoal,
+      dailyGoal: customSettings?.dailyGoal,
+    });
+
+    if (!res.success || !res.data) {
+      throw new Error(res.message || 'Google authentication failed with backend server.');
+    }
+
+    // 3. Save session in frontend
+    login(res.data.token, res.data.user);
+    return res.data.user;
+  };
+
   const logout = () => {
     localStorage.removeItem('padikam_token');
     localStorage.removeItem('padikam_user');
     localStorage.removeItem('angleyam_token');
     localStorage.removeItem('angleyam_user');
+    logoutFirebase();
     setToken(null);
     setUser(null);
     setCurrentStreak(0);
@@ -108,7 +149,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         currentStreak,
         longestStreak,
         dailyGoal,
+        isFirebaseReady,
         login,
+        loginWithGoogle,
         logout,
         refreshUser,
         updateUserData,

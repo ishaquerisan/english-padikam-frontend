@@ -19,6 +19,18 @@ export const authService = {
     return (await api.post('/auth/login', credentials)) as unknown as AuthResponse;
   },
 
+  async googleLogin(data: {
+    idToken: string;
+    name?: string;
+    email?: string;
+    photoUrl?: string;
+    englishLevel?: string;
+    learningGoal?: string;
+    dailyGoal?: number;
+  }): Promise<AuthResponse> {
+    return (await api.post('/auth/google', data)) as unknown as AuthResponse;
+  },
+
   async getMe(): Promise<{ success: boolean; data: { user: User; streak: any; dailyGoal: number } }> {
     return (await api.get('/auth/me')) as any;
   },

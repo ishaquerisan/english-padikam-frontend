@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { authService } from '../services/authService';
-import { BookOpen, Lock, Mail, ArrowRight } from 'lucide-react';
+import { Lock, Mail, ArrowRight } from 'lucide-react';
+import { GoogleAuthButton } from '../components/GoogleAuthButton';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -60,6 +61,17 @@ export const Login: React.FC = () => {
           </div>
         )}
 
+        {/* Google OAuth Button */}
+        <GoogleAuthButton text="Continue with Google" redirectTo={from} />
+
+        {/* Divider */}
+        <div className="relative flex items-center justify-center">
+          <div className="border-t border-slate-200 dark:border-slate-700 w-full" />
+          <span className="bg-white dark:bg-slate-900 px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider relative">
+            Or continue with email
+          </span>
+        </div>
+
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -101,7 +113,7 @@ export const Login: React.FC = () => {
             disabled={loading}
             className="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-600/20 transition-all active:scale-95 flex items-center justify-center gap-2 disabled:opacity-50"
           >
-            {loading ? 'Logging in...' : 'Sign In'} <ArrowRight size={16} />
+            {loading ? 'Logging in...' : 'Sign In with Email'} <ArrowRight size={16} />
           </button>
         </form>
 

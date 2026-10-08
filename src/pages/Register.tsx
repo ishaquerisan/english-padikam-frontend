@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { authService } from '../services/authService';
-import { BookOpen, Lock, Mail, User, Target, ArrowRight, Award } from 'lucide-react';
+import { Lock, Mail, User, ArrowRight } from 'lucide-react';
+import { GoogleAuthButton } from '../components/GoogleAuthButton';
 
 export const Register: React.FC = () => {
   const [name, setName] = useState('');
@@ -68,6 +69,25 @@ export const Register: React.FC = () => {
             {error}
           </div>
         )}
+
+        {/* Google One-Click Sign Up */}
+        <GoogleAuthButton
+          text="Sign up with Google"
+          redirectTo="/dashboard"
+          customSettings={{
+            englishLevel,
+            learningGoal,
+            dailyGoal,
+          }}
+        />
+
+        {/* Divider */}
+        <div className="relative flex items-center justify-center">
+          <div className="border-t border-slate-200 dark:border-slate-700 w-full" />
+          <span className="bg-white dark:bg-slate-900 px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider relative">
+            Or register with email
+          </span>
+        </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
