@@ -103,10 +103,22 @@ export const Dashboard: React.FC = () => {
       {dailyData && (
         <div className="relative overflow-hidden rounded-3xl p-6 bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800 text-white shadow-xl shadow-indigo-600/20">
           <div className="relative z-10 space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 backdrop-blur-md text-white border border-white/20">
-                Daily Lesson #{dailyData.lesson.lessonNumber}
-              </span>
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 backdrop-blur-md text-white border border-white/20">
+                  Daily Lesson #{dailyData.lesson.lessonNumber}
+                </span>
+                {dailyData.lesson.category && (
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-purple-400/30 backdrop-blur-md text-white border border-purple-300/30">
+                    {dailyData.lesson.category.name} ({dailyData.lesson.category.malayalamName})
+                  </span>
+                )}
+                {dailyData.lesson.level && (
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white/10 backdrop-blur-md text-indigo-100 border border-white/10 hidden sm:inline-block">
+                    {dailyData.lesson.level.code || dailyData.lesson.level.name}
+                  </span>
+                )}
+              </div>
               <span className="text-xs font-bold text-indigo-200">
                 {dailyData.completedInLesson} of {dailyData.goal} Completed
               </span>

@@ -189,10 +189,15 @@ export const DailyLessonPage: React.FC = () => {
             <span className="hidden sm:inline">Dashboard</span>
           </button>
 
-          <div className="text-center">
+          <div className="text-center flex items-center justify-center gap-2 flex-wrap">
             <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/80 px-3 py-1 rounded-full border border-indigo-200/60 dark:border-indigo-800/60">
               Daily Lesson #{data.lesson.lessonNumber}
             </span>
+            {data.lesson.category && (
+              <span className="text-xs font-bold text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/80 px-3 py-1 rounded-full border border-purple-200/60 dark:border-purple-800/60">
+                {data.lesson.category.name} ({data.lesson.category.malayalamName})
+              </span>
+            )}
           </div>
 
           <div className="flex items-center gap-1.5 text-xs font-black text-orange-500 bg-orange-50 dark:bg-orange-950/60 px-2.5 py-1 rounded-full border border-orange-200/60 dark:border-orange-800/60">

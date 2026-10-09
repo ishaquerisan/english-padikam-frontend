@@ -182,22 +182,25 @@ export const ProfilePage: React.FC = () => {
           {/* Preferred Default Category */}
           <div>
             <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
-              Primary Focus Category
+              Primary Focus Category (പ്രധാന വിഭാഗം)
             </label>
             <select
               value={learningGoal}
               onChange={(e) => setLearningGoal(e.target.value)}
               className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-semibold text-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-indigo-500"
             >
-              <option value="Daily Conversation">Daily Conversation (ദൈനംദിന സംഭാഷണം)</option>
-              {categories.map((c) => (
-                <option key={c.id} value={c.name}>
-                  {c.name} ({c.malayalamName})
-                </option>
-              ))}
+              {categories.length > 0 ? (
+                categories.map((c) => (
+                  <option key={c.id} value={c.name}>
+                    {c.name} ({c.malayalamName})
+                  </option>
+                ))
+              ) : (
+                <option value="Daily Conversation">Daily Conversation (ദൈനംദിന സംഭാഷണം)</option>
+              )}
             </select>
             <p className="text-[11px] text-slate-400 mt-1">
-              This category and level will be prioritized for your personalized daily sentences.
+              Changing this category immediately updates today's Daily 5 sentences to your chosen category.
             </p>
           </div>
         </div>
